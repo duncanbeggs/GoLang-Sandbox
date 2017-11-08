@@ -5,12 +5,16 @@ package main
 import "fmt"
 
 type treeNode struct {
-	var leftPtr *Node
-	var rightPtr *Node
+	leftPtr *treeNode
+	rightPtr *treeNode
+	nodeVal int
+}
 
+type Tree struct {
+	root *treeNode
+	//might put some more stuff in here later
+}
 
 func main() {
 	fmt.Println("One day I will be a big beautiful tree!")
 }
-
-
