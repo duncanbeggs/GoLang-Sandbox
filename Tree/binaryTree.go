@@ -25,7 +25,7 @@ func newTree() *Tree {
 func main() {
 	printWelcome()
 	fmt.Println("Tree Ready! What would you like to do?")
-
+	fmt.Printf("1 - Insert int\n2 - Delete int\n3 - Check for int\n4 - Print Tree")
 
 
 	fmt.Println("One day I will be a big beautiful tree!")
