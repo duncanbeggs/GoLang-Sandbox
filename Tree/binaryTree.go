@@ -45,6 +45,16 @@ func recNodeInsert(intVal int, tn *treeNode) {
 	}
 }
 
+func printInOrder (tn *treeNode) {
+	if tn == nil {
+		fmt.Println("Tree is empty")
+		return
+	}
+	
+	return
+}
+
+
 func main() {
 	printWelcome()
 	fmt.Println("Tree Ready! What would you like to do?")
@@ -71,7 +81,8 @@ func main() {
 			fmt.Scan(&n)
 			switch n {
 				case 1:
-					fmt.Printf("in-order")
+					fmt.Printf("In-Order: ")
+					printInOrder((*treePtr).root)
 				case 2:
 					fmt.Printf("pre-order")
 				case 3:
