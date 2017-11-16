@@ -31,16 +31,20 @@ func nodeInsert(intVal int, t *Tree) bool {
 
 func recNodeInsert(intVal int, tn *treeNode) {
 	if tn == nil {
+		fmt.Printf("|tn==nil Node Inserted|\n")
 		newNode := treeNode{nil,nil,intVal}
 		tn = &newNode
 		return
 	}
 
 	if tn.nodeVal < intVal {//NOTE: switching from (*tn).nodeVal syntax. These are equivalent in Go
+		fmt.Printf("inserting %d right of %d",intVal,tn.nodeVal)
 		recNodeInsert(intVal, tn.rightPtr)
 	} else if tn.nodeVal > intVal {
+		fmt.Printf("inserting %d left of %d", intVal, tn.nodeVal)
 		recNodeInsert(intVal, tn.leftPtr)
 	} else {//in case of tn.nodeVal == intVal then do nothing
+		fmt.Printf("|nodeVal == intVal|")
 		return
 	}
 }
@@ -50,7 +54,22 @@ func printInOrder (tn *treeNode) {
 		fmt.Println("Tree is empty")
 		return
 	}
-	
+
+	if (tn.leftPtr == nil && tn.rightPtr == nil) {
+		fmt.Printf("%d, ", tn.nodeVal)
+	} else if tn.leftPtr == nil && tn.rightPtr != nil {
+		printInOrder(tn.rightPtr)
+		fmt.Printf("%d, ", tn.nodeVal)
+	} else if tn.leftPtr != nil && tn.rightPtr == nil {
+		fmt.Printf("%d, ", tn.nodeVal)
+		printInOrder(tn.leftPtr)
+		return
+	} else if tn.leftPtr != nil && tn.rightPtr != nil {
+		printInOrder(tn.leftPtr)
+		fmt.Printf("%d, ", tn.nodeVal)
+		printInOrder(tn.rightPtr)
+		return
+	}
 	return
 }
 
