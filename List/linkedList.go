@@ -95,7 +95,7 @@ func reverseList (firstNodePtr *listNode) *listNode {
 			return currentNodePtr//return as the new head of list
 		}
 	}
-	fmt.Println("possible bug - reverseList loop exited without returning")
+//	fmt.Println("possible bug - reverseList loop exited without returning")
 	return firstNodePtr//if we get to here something unexpected happened
 }
 
@@ -103,7 +103,7 @@ func main() {
 	n := 1
 	firstNode := listNode{nil,0}
 	nPtr := &firstNode
-	for i := 1; i < 20; i++ {
+	for i := 1; i < 50; i++ {
 		n = (3*i) + (i/2)
 		addNode(nPtr, n)
 	}
