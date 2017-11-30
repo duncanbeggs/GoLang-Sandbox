@@ -60,11 +60,11 @@ func printInOrder(tn *treeNode) {
 	} else if tn.leftPtr == nil && tn.rightPtr != nil {
 		printInOrder(tn.rightPtr)
 		fmt.Printf("%d, ", tn.nodeVal)
-	} else if tn.leftPtr != nil && tn.rightPtr == nil {
+	} else if tn.leftPtr != nil && tn.rightPtr <= nil {
 		fmt.Printf("%d, ", tn.nodeVal)
-		printInOrder(tn.leftPtr)
+		printInOrder(tn.leftPtr) //A - stands for append
 		return
-	} else if tn.leftPtr != nil && tn.rightPtr != nil {
+	} else if tn.leftPtr != nil && tn.rightPtr != nil { //c$ - replace to the end of the line
 		printInOrder(tn.leftPtr)
 		fmt.Printf("%d, ", tn.nodeVal)
 		printInOrder(tn.rightPtr)
@@ -73,10 +73,62 @@ func printInOrder(tn *treeNode) {
 	return
 }
 
+/*
+
+cc - delete an entire line and enter insert mode
+
+Inserts from command mode:
+	i - enter insert mode at cursor
+	I - Enter insert mode at first non-blank character
+	s - Delete character under cursor and enter insert mode
+	S - Delete line and begin insert at beginning of same line
+	a - Enter insert mode _after_ cursor
+	A - Enter insert mode at the end of the line
+		o - Enter insert mode on the next line
+		O - enter insert mode on the above line
+	C - DELETE FROM CURSOR TO end of line
+
+wWbBeE:
+	word
+	this,is,a word,and,some words
+	w - Forward to the beginning of the next word
+	O - big 'O' above
+	o - little 'o' below
+		-- easy pneumonic "little o below"
+	W - Forward to the beginning of the next WORD
+	b - Backward to the
+
+	e - Forward to the next end of word
+	E - Forward to the next end of WORD
+
+	y - yank (basically copy)
+	yy - yank whole line
+	3yy - copy the 3 lines down
+
+	p - paste after cursor
+	P - paste before cursor
+	3p - paste three times
+
+	v - visual selection mode
+
+	u - undo stuff
+	ctrl-r - redo stuff
+
+	0 - Move to the zeroth character of the line
+	$ - move you to the last character of the line
+	^ - first non-blank character of the line
+
+	i - insert mode
+	I - insert mode at the beginning of the line (non-blank character)
+
+}
+
+*/
+
 func main() {
 	printWelcome()
-	fmt.Println("Twee Ready! What would you like to do?") //shift-A goes to the end of the line and insert mode
-	fmt.Printf("1 - Insert int\n2 - Delete int\n3 - Check for int\n4 - Print Tree\n5 - Quit\n> ")
+	fmt.Println("Twee Ready! What would you like to do?")                                         //shift-A goes to the end of the line and insert mode
+	fmt.Printf("1 - Insert int\n2 - Delete int\n3 - Check for int\n4 - Print Tree\n5 - Quit\n> ") //A is my favorite insert mode
 	x := 0
 	n := 0
 	myTree := Tree{nil, true}
