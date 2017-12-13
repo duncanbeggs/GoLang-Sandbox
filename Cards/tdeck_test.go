@@ -26,6 +26,7 @@ func TestNewDeck(t *testing.T) { //note that t is our 'test handler' variable
 	}
 }
 
+//the type *testing.T involves one of the more tricky topics around go
 func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
 	os.Remove("_decktesting")
 
